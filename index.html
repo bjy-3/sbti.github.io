@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI 性格测试（20题版）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .desc {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .q-title {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .option {
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        input[type="radio"] {
+            margin-right: 8px;
+            transform: scale(1.1);
+        }
+        .btn-box {
+            text-align: center;
+            margin: 30px 0;
+        }
+        #submitBtn {
+            padding: 12px 40px;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #submitBtn:hover {
+            background: #2980b9;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            display: none;
+        }
+        .result h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .result-text {
+            color: #444;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MBTI 专业性格测试（20题精简版）</h1>
+        <p class="desc">请根据真实想法选择，每题二选一，完成后点击提交查看结果</p>
+
+        <!-- 测试题目区域 -->
+        <div id="quiz">
+            <!-- 第1题 -->
+            <div class="question">
+                <p class="q-title">1. 休息时你更喜欢？</p>
+                <div class="option"><input type="radio" name="q1" value="E" required> A. 和朋友聚会聊天</div>
+                <div class="option"><input type="radio" name="q1" value="I" required> B. 独自看书/追剧</div>
+            </div>
+            <!-- 第2题 -->
+            <div class="question">
+                <p class="q-title">2. 遇到压力大的事情，你会？</p>
+                <div class="option"><input type="radio" name="q2" value="E" required> A. 找人倾诉排解</div>
+                <div class="option"><input type="radio" name="q2" value="I" required> B. 自己消化情绪</div>
+            </div>
+            <!-- 第3题 -->
+            <div class="question">
+                <p class="q-title">3. 日常社交状态？</p>
+                <div class="option"><input type="radio" name="q3" value="E" required> A. 越热闹越精神</div>
+                <div class="option"><input type="radio" name="q3" value="I" required> B. 社交后觉得疲惫</div>
+            </div>
+            <!-- 第4题 -->
+            <div class="question">
+                <p class="q-title">4. 规划出行，你习惯？</p>
+                <div class="option"><input type="radio" name="q4" value="S" required> A. 按实际路线、地点安排</div>
+                <div class="option"><input type="radio" name="q4" value="N" required> B. 随心走，享受未知惊喜</div>
+            </div>
+            <!-- 第5题 -->
+            <div class="question">
+                <p class="q-title">5. 看待一件事，你更关注？</p>
+                <div class="option"><input type="radio" name="q5" value="S" required> A. 现实细节、客观事实</div>
+                <div class="option"><input type="radio" name="q5" value="N" required> B. 未来可能性、深层含义</div>
+            </div>
+            <!-- 第6题 -->
+            <div class="question">
+                <p class="q-title">6. 学习新技能，你偏好？</p>
+                <div class="option"><input type="radio" name="q6" value="S" required> A. 一步步按教程实操</div>
+                <div class="option"><input type="radio" name="q6" value="N" required> B. 先理解整体思路再动手</div>
+            </div>
+            <!-- 第7题 -->
+            <div class="question">
+                <p class="q-title">7. 和他人产生分歧，你优先？</p>
+                <div class="option"><input type="radio" name="q7" value="T" required> A. 讲道理、分对错</div>
+                <div class="option"><input type="radio" name="q7" value="F" required> B. 照顾对方情绪、求和睦</div>
+            </div>
+            <!-- 第8题 -->
+            <div class="question">
+                <p class="q-title">8. 评价别人，你更看重？</p>
+                <div class="option"><input type="radio" name="q8" value="T" required> A. 能力、做事逻辑</div>
+                <div class="option"><input type="radio" name="q8" value="F" required> B. 人品、待人态度</div>
+            </div>
+            <!-- 第9题 -->
+            <div class="question">
+                <p class="q-title">9. 做决定时，你会？</p>
+                <div class="option"><input type="radio" name="q9" value="T" required> A. 理性分析利弊</div>
+                <div class="option"><input type="radio" name="q9" value="F" required> B. 跟着内心感受走</div>
+            </div>
+            <!-- 第10题 -->
+            <div class="question">
+                <p class="q-title">10. 生活物品摆放？</p>
+                <div class="option"><input type="radio" name="q10" value="J" required> A. 整齐有序，固定位置</div>
+                <div class="option"><input type="radio" name="q10" value="P" required> B. 随性摆放，怎么方便怎么来</div>
+            </div>
+            <!-- 第11题 -->
+            <div class="question">
+                <p class="q-title">11. 面对截止日期，你？</p>
+                <div class="option"><input type="radio" name="q11" value="J" required> A. 提前完成，心里踏实</div>
+                <div class="option"><input type="radio" name="q11" value="P" required> B. 临近截止再冲刺</div>
+            </div>
+            <!-- 第12题 -->
+            <div class="question">
+                <p class="q-title">12. 周末安排？</p>
+                <div class="option"><input type="radio" name="q12" value="J" required> A. 提前计划好全天行程</div>
+                <div class="option"><input type="radio" name="q12" value="P" required> B. 临时决定当天做什么</div>
+            </div>
+            <!-- 第13题 -->
+            <div class="question">
+                <p class="q-title">13. 参加陌生聚会，你会？</p>
+                <div class="option"><input type="radio" name="q13" value="E" required> A. 主动认识新朋友</div>
+                <div class="option"><input type="radio" name="q13" value="I" required> B. 只和熟悉的人待在一起</div>
+            </div>
+            <!-- 第14题 -->
+            <div class="question">
+                <p class="q-title">14. 听故事时，你更喜欢？</p>
+                <div class="option"><input type="radio" name="q14" value="S" required> A. 生动具体的细节描述</div>
+                <div class="option"><input type="radio" name="q14" value="N" required> B. 剧情走向和寓意</div>
+            </div>
+            <!-- 第15题 -->
+            <div class="question">
+                <p class="q-title">15. 朋友向你诉苦，你会？</p>
+                <div class="option"><input type="radio" name="q15" value="T" required> A. 帮他分析问题、给解决方案</div>
+                <div class="option"><input type="radio" name="q15" value="F" required> B. 耐心安慰、共情陪伴</div>
+            </div>
+            <!-- 第16题 -->
+            <div class="question">
+                <p class="q-title">16. 临时改变计划，你的感受？</p>
+                <div class="option"><input type="radio" name="q16" value="J" required> A. 烦躁，不喜欢变动</div>
+                <div class="option"><input type="radio" name="q16" value="P" required> B. 无所谓，乐于接受变化</div>
+            </div>
+            <!-- 第17题 -->
+            <div class="question">
+                <p class="q-title">17. 表达想法时，你？</p>
+                <div class="option"><input type="radio" name="q17" value="E" required> A. 想到就说，边说边想</div>
+                <div class="option"><input type="radio" name="q17" value="I" required> B. 先在心里组织好语言再说</div>
+            </div>
+            <!-- 第18题 -->
+            <div class="question">
+                <p class="q-title">18. 看待梦想与现实？</p>
+                <div class="option"><input type="radio" name="q18" value="S" required> A. 立足现实，脚踏实地</div>
+                <div class="option"><input type="radio" name="q18" value="N" required> B. 憧憬未来，敢于想象</div>
+            </div>
+            <!-- 第19题 -->
+            <div class="question">
+                <p class="q-title">19. 团队合作中，你倾向？</p>
+                <div class="option"><input type="radio" name="q19" value="T" required> A. 坚守规则，对事不对人</div>
+                <div class="option"><input type="radio" name="q19" value="F" required> B. 照顾团队氛围，灵活变通</div>
+            </div>
+            <!-- 第20题 -->
+            <div class="question">
+                <p class="q-title">20. 面对突发状况，你？</p>
+                <div class="option"><input type="radio" name="q20" value="J" required> A. 立刻梳理方案，稳住局面</div>
+                <div class="option"><input type="radio" name="q20" value="P" required> B. 随机应变，走一步看一步</div>
+            </div>
+        </div>
+
+        <div class="btn-box">
+            <button id="submitBtn">提交答案，查看测试结果</button>
+        </div>
+
+        <!-- 结果展示区域 -->
+        <div class="result" id="resultBox">
+            <h2>你的 MBTI 测试结果</h2>
+            <div class="result-text" id="resultContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // 所有题目name集合
+        const questions = [
+            'q1','q2','q3','q13','q17',   // E/I 共5题
+            'q4','q5','q6','q14','q18',   // S/N 共5题
+            'q7','q8','q9','q15','q19',   // T/F 共5题
+            'q10','q11','q12','q16','q20' // J/P 共5题
+        ];
+
+        // 各维度计数
+        let countE = 0, countI = 0;
+        let countS = 0, countN = 0;
+        let countT = 0, countF = 0;
+        let countJ = 0, countP = 0;
+
+        // 结果描述库
+        const typeDesc = {
+            "ESTJ": "总经理型：务实严谨、执行力强，擅长管理与规划，做事有条理，是可靠的组织者。",
+            "ESTP": "企业家型：灵活外向、擅长实操，热爱冒险与新鲜事物，临场应变能力极强。",
+            "ESFJ": "执政官型：热情友善、善于共情，重视人际关系，乐于照顾他人，人缘极佳。",
+            "ESFP": "表演者型：活泼开朗、热爱生活，擅长带动氛围，享受当下，表现力强。",
+            "ISTJ": "物流师型：沉稳细心、恪守原则，做事踏实靠谱，注重规则与细节。",
+            "ISTP": "鉴赏家型：冷静理智、动手能力强，偏爱独立做事，擅长解决实际难题。",
+            "ISFJ": "守卫者型：温柔体贴、有责任心，默默付出，重视身边人的感受与安稳。",
+            "ISFP": "探险家型：温和内敛、追求自我，热爱艺术与美好，行事低调随性。",
+            "ENTJ": "指挥官型：自信果断、远见卓识，天生领导者，善于统筹全局、制定策略。",
+            "ENTP": "辩论家型：思维活跃、脑洞大开，喜欢探索新观点，擅长沟通与思辨。",
+            "ENFJ": "主人公型：理想热忱、感染力强，擅长引导他人，有格局且乐于助人。",
+            "ENFP": "竞选者型：乐观浪漫、想象力丰富，热爱自由，对一切新鲜事物充满好奇。",
+            "INTJ": "建筑师型：独立睿智、思维深邃，擅长长远规划，追求完美与创新。",
+            "INTP": "逻辑学家型：理性好奇、酷爱思考，沉迷钻研理论，思维天马行空。",
+            "INFJ": "提倡者型：内敛通透、洞察力强，内心细腻，拥有独特的精神追求。",
+            "INFP": "调停者型：温柔理想、内心丰盈，重视精神世界，善良且向往纯粹。"
+        };
+
+        // 提交按钮事件
+        document.getElementById('submitBtn').addEventListener('click', function(){
+            // 重置计数
+            countE = countI = countS = countN = countT = countF = countJ = countP = 0;
+            let allChecked = true;
+
+            // 遍历所有题目，统计选择
+            questions.forEach(qName => {
+                const radios = document.getElementsByName(qName);
+                let hasSelect = false;
+                radios.forEach(radio => {
+                    if(radio.checked){
+                        hasSelect = true;
+                        switch(radio.value){
+                            case 'E': countE++; break;
+                            case 'I': countI++; break;
+                            case 'S': countS++; break;
+                            case 'N': countN++; break;
+                            case 'T': countT++; break;
+                            case 'F': countF++; break;
+                            case 'J': countJ++; break;
+                            case 'P': countP++; break;
+                        }
+                    }
+                });
+                if(!hasSelect) allChecked = false;
+            });
+
+            // 校验是否全部答题
+            if(!allChecked){
+                alert("请完成所有题目后再提交！");
+                return;
+            }
+
+            // 判断四个维度
+            let dim1 = countE > countI ? "E" : "I";
+            let dim2 = countS > countN ? "S" : "N";
+            let dim3 = countT > countF ? "T" : "F";
+            let dim4 = countJ > countP ? "J" : "P";
+            const resultType = dim1 + dim2 + dim3 + dim4;
+
+            // 展示结果
+            const resultBox = document.getElementById('resultBox');
+            const resultContent = document.getElementById('resultContent');
+            resultContent.innerHTML = `
+                <p><strong>你的人格类型：${resultType}</strong></p>
+                <p style="margin-top:10px;">${typeDesc[resultType]}</p>
+            `;
+            resultBox.style.display = "block";
+            // 滚动到结果区域
+            resultBox.scrollIntoView({behavior: "smooth"});
+        });
+    </script>
+</body>
+</html>
